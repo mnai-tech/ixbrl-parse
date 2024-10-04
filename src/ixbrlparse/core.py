@@ -301,14 +301,14 @@ class IXBRL:
     Parse an iXBRL file.
     """
 
-    def __init__(self, f: IO, raise_on_error: bool = True) -> None:  # noqa: FBT001, FBT002
+    def __init__(self, file_contents: str, raise_on_error: bool = True) -> None:  # noqa: FBT001, FBT002
         """Constructor for the IXBRL class.
 
         Parameters:
             f:  File-like object to parse.
             raise_on_error:  Whether to raise an exception on error
         """
-        self.soup = BeautifulSoup(f.read(), "xml", multi_valued_attributes=None)
+        self.soup = BeautifulSoup(file_contents, "xml", multi_valued_attributes=None)
         self.raise_on_error = raise_on_error
         self._get_parser()
         self.parser._get_schema()
